@@ -17,5 +17,5 @@ var t=globalThis,e={};(function(e){function n(t){return(n="function"==typeof Sym
                     <img src="${i.png}" alt="Country Flag."
                         class="app-cimg" width="400" height="300">
                 </div>
-            </div>`}).join("");r.insertAdjacentHTML("beforeend",e)}}i.addEventListener("submit",t=>{var e;t.preventDefault(),(e=o.value.toLowerCase().trim(),fetch(`https://restcountries.com/v3.1/name/${e}`).then(t=>t.json())).then(s)});
-//# sourceMappingURL=js-find-country.f57be7d0.js.map
+            </div>`}).join("");r.insertAdjacentHTML("beforeend",e)}}i.addEventListener("submit",t=>{t.preventDefault();let n=o.value.toLowerCase().trim();if(""==n)return(0,e.error)({title:"Oh no!",text:"Please write a country"});fetch(`https://restcountries.com/v3.1/name/${n}`).then(t=>t.json()).then(s)});
+//# sourceMappingURL=js-find-country.82349492.js.map

@@ -730,7 +730,12 @@ const list = document.querySelector(".app-list");
 form.addEventListener("submit", (event)=>{
     event.preventDefault(); // ! Do not delete it!
     const value = input.value.toLowerCase().trim(); // * we will delete spaces in start end in the end and make the letters with out big leters
-    (0, _fetchCountriesJsDefault.default)(value).then(renderCountry); // * will start another function for renderCountry
+    // * Check if user write something
+    if (value == "") return (0, _pnotifyJs.error)({
+        title: "Oh no!",
+        text: "Please write a country"
+    });
+    else (0, _fetchCountriesJsDefault.default)(value).then(renderCountry); // * will start another function for renderCountry
 });
 function renderCountry(array) {
     // * If we have more than 10 arrays we will be show user a modal that he write a country more specific query
