@@ -20,7 +20,16 @@ const list = document.querySelector(".app-list");
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // ! Do not delete it!
   const value = input.value.toLowerCase().trim(); // * we will delete spaces in start end in the end and make the letters with out big leters
-  fetchCountries(value).then(renderCountry); // * will start another function for renderCountry
+
+  // * Check if user write something
+  if (value == "") {
+    return error({
+      title: "Oh no!",
+      text: "Please write a country",
+    });
+  } else {
+    fetchCountries(value).then(renderCountry); // * will start another function for renderCountry
+  }
 });
 
 function renderCountry(array) {
@@ -43,21 +52,23 @@ function renderCountry(array) {
     // * Clear a list
     list.innerHTML = "";
     //  * make a new list for countries
-    const countries = array.map((country) => {
+    const countries = array
+      .map((country) => {
         return `<li class="app-item">${country.name.common}</li>`;
-      }).join("");
+      })
+      .join("");
     // * Add our items in the end of the list
     list.insertAdjacentHTML("beforeend", countries);
-  } 
+  }
   // * If we have 1 array we wil show him information about this country!
   else if (array.length === 1) {
     // * Clear a list
     list.innerHTML = "";
     //  * make a board for information about with country
-     const countrie = array.map(
-        ({ name, capital, population, flags, languages }) => {
-          const languagesArray = Object.values(languages);
-          return `<h1 class="app-name">Name: ${name.common}</h1>
+    const countrie = array
+      .map(({ name, capital, population, flags, languages }) => {
+        const languagesArray = Object.values(languages);
+        return `<h1 class="app-name">Name: ${name.common}</h1>
             <div class="app-box">
                 <div class="app-info">
                     <h3 class="app-subtitle">Capital: <span
@@ -81,8 +92,8 @@ function renderCountry(array) {
                         class="app-cimg" width="400" height="300">
                 </div>
             </div>`;
-        }
-      ).join("");
+      })
+      .join("");
     // * Add our board in the end of the list
     list.insertAdjacentHTML("beforeend", countrie);
   }
