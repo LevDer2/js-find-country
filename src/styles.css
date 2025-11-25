@@ -1,9 +1,8 @@
-/* TODO: Cut this list in another file called "reset.css"*/
-
 /* !Base */
 body {
   margin: 0;
   padding: 0;
+  background-color: antiquewhite;
 }
 
 /* *App */
